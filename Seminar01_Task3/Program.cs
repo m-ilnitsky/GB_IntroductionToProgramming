@@ -1,7 +1,7 @@
 ﻿Console.Write("Введите номер дня: ");
 int dayNumber = int.Parse(Console.ReadLine() ?? "0");
 
-System.Console.WriteLine();
+Console.WriteLine();
 Console.WriteLine($"Введено число {dayNumber}");
 
 if (dayNumber < 1)
