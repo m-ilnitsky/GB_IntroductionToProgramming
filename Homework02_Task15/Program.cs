@@ -1,25 +1,38 @@
-﻿bool isValidDayNumber = false;
-int dayNumber;
+﻿// Задача 15: 
+// Напишите программу, которая принимает на вход цифру, обозначающую день недели, и проверяет, является ли этот день выходным.
+// 6 -> да
+// 7 -> да
+// 1 -> нет
 
-do
+int GetDayNumber()
 {
-    Console.Write("Введите номер дня недели (число от 1 до 7): ");
-    dayNumber = int.Parse(Console.ReadLine() ?? "0");
+    bool isValidDayNumber = false;
+    int dayNumber;
 
-    if (dayNumber < 1)
+    do
     {
-        Console.WriteLine($"Введённое число {dayNumber} меньше 1");
+        Console.Write("Введите номер дня недели (число от 1 до 7): ");
+        dayNumber = int.Parse(Console.ReadLine() ?? "0");
+
+        if (dayNumber < 1)
+        {
+            Console.WriteLine($"Введённое число {dayNumber} меньше 1");
+        }
+        else if (dayNumber > 7)
+        {
+            Console.WriteLine($"Введённое число {dayNumber} больше 7");
+        }
+        else
+        {
+            isValidDayNumber = true;
+        }
     }
-    else if (dayNumber > 7)
-    {
-        Console.WriteLine($"Введённое число {dayNumber} больше 7");
-    }
-    else
-    {
-        isValidDayNumber = true;
-    }
+    while (!isValidDayNumber);
+
+    return dayNumber;
 }
-while (!isValidDayNumber);
+
+int dayNumber = GetDayNumber();
 
 if (dayNumber > 5)
 {
