@@ -1,4 +1,4 @@
-﻿Console.WriteLine("Введите  число от 100 до 999: ");
+﻿Console.WriteLine("Введите  число от 100 до 999:");
 int number = int.Parse(Console.ReadLine() ?? "0");
 
 int absNumber = Math.Abs(number);
