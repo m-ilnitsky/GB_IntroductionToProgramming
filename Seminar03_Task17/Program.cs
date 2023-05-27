@@ -3,7 +3,7 @@
 // причём X ≠ 0 и Y ≠ 0 и выдаёт номер четверти плоскости, 
 // в которой находится эта точка.
 
-int GetNumber(string message)
+int ReadInt(string message)
 {
     while (true)
     {
@@ -22,8 +22,8 @@ void WriteLine(int x, int y, string info)
     Console.WriteLine($"({x}, {y}) - {info}");
 }
 
-int x = GetNumber("Введите координату X: ");
-int y = GetNumber("Введите координату Y: ");
+int x = ReadInt("Введите координату X: ");
+int y = ReadInt("Введите координату Y: ");
 
 if (x > 0 && y > 0)
 {
