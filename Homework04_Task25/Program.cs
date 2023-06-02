@@ -5,10 +5,10 @@
 // 2, 4 -> 16
 
 Console.Write("Введите число для возведения в степень: ");
-double number = double.Parse(Console.ReadLine());
+double number = double.Parse(Console.ReadLine() ?? "0");
 
 Console.Write("Введите целое неотрицательное значение степени: ");
-int power = int.Parse(Console.ReadLine());
+int power = int.Parse(Console.ReadLine() ?? "0");
 
 if (power < 0)
 {
