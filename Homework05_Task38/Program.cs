@@ -3,14 +3,15 @@
 // Найдите разницу между максимальным и минимальным элементов массива.
 // [3.22, 4.2, 1.15, 77.15, 65.2] => 77.15 - 1.15 = 76
 
-double[] GetRandomDoubleNumbers(int numbersCount)
+double[] GetRandomDoubleNumbers(int numbersCount, double minNumber = 0, double maxNumber = 1)
 {
     var rnd = new Random();
     var numbers = new double[numbersCount];
+    var difference = maxNumber - minNumber;
 
     for (int i = 0; i < numbersCount; i++)
     {
-        numbers[i] = rnd.NextDouble();
+        numbers[i] = minNumber + difference * rnd.NextDouble();
     }
 
     return numbers;
@@ -42,7 +43,7 @@ double GetMaxDifferenceOfNumbers(double[] numbers)
     return maxNumber - minNumber;
 }
 
-var numbers = GetRandomDoubleNumbers(10);
+var numbers = GetRandomDoubleNumbers(10, -10, -1);
 
 Console.WriteLine($"Массив: {GetString(numbers)}");
 Console.WriteLine($"Максимальная разность чисел: {GetMaxDifferenceOfNumbers(numbers),0:F3}");
