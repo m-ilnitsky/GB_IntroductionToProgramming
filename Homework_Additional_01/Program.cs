@@ -47,6 +47,45 @@ string[] GetWords(char[] alphabet, int wordLettersCount)
     return words;
 }
 
+string[] GetWordsRecursivelyInner(char[] alphabet, string[] inputWords, int lettersCountForAdd)
+{
+    if (lettersCountForAdd == 0)
+    {
+        return inputWords;
+    }
+
+    var outputWordsCount = inputWords.Length * alphabet.Length;
+    var outputWords = new string[outputWordsCount];
+
+    for (int i = 0; i < inputWords.Length; i++)
+    {
+        for (int j = 0; j < alphabet.Length; j++)
+        {
+            var outputWordIndex = i * alphabet.Length + j;
+            outputWords[outputWordIndex] = $"{inputWords[i]}{alphabet[j]}";
+        }
+    }
+
+    return GetWordsRecursivelyInner(alphabet, outputWords, lettersCountForAdd - 1);
+}
+
+string[] GetWordsRecursively(char[] alphabet, int wordLettersCount)
+{
+    if (wordLettersCount < 1)
+    {
+        return new string[0];
+    }
+
+    var words = new string[alphabet.Length];
+
+    for (int i = 0; i < alphabet.Length; i++)
+    {
+        words[i] = alphabet[i].ToString();
+    }
+
+    return GetWordsRecursivelyInner(alphabet, words, wordLettersCount - 1);
+}
+
 void WriteChars(char[] chars)
 {
     Console.WriteLine($"[{string.Join(", ", chars)}]");
@@ -72,10 +111,16 @@ foreach (var alphabet in alphabets)
 
     for (int i = 1; i <= 4; i++)
     {
-        var words = GetWords(alphabet, i);
+        var words1 = GetWords(alphabet, i);
+        var words2 = GetWordsRecursively(alphabet, i);
+
         Console.WriteLine();
-        Console.Write($"Из {i} букв получилось {words.Length} слов: ");
-        WriteStrings(words);
+
+        Console.Write($"Из {i} букв ИТЕРАТИВНО получилось {words1.Length} слов: ");
+        WriteStrings(words1);
+
+        Console.Write($"Из {i} букв РЕКУРСИВНО получилось {words2.Length} слов: ");
+        WriteStrings(words2);
     }
 }
 
