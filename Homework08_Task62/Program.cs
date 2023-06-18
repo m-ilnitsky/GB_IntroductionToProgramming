@@ -7,6 +7,23 @@
 // 11 16 15 06
 // 10 09 08 07
 
+int ReadInt(string message)
+{
+    Console.Write(message);
+
+    while (true)
+    {
+        var line = Console.ReadLine();
+
+        if (int.TryParse(line, out var number))
+        {
+            return number;
+        }
+
+        Console.WriteLine("Введите корректное целое число: ");
+    }
+}
+
 void WriteMatrix(int[,] matrix)
 {
     for (int i = 0; i < matrix.GetLength(0); i++)
@@ -92,9 +109,16 @@ void FillInSpiral(int[,] matrix)
     }
 }
 
-var matrix = new int[11, 15];
+var rowsCount = ReadInt("Введите количество строк: ");
+var columnsCount = ReadInt("Введите количество столбцов: ");
+
+var matrix = new int[rowsCount, columnsCount];
+
+Console.WriteLine("Матрица до заполнения:");
 WriteMatrix(matrix);
 
 FillInSpiral(matrix);
+
 Console.WriteLine();
+Console.WriteLine("Матрица после спирального заполнения:");
 WriteMatrix(matrix);
