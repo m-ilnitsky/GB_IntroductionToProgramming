@@ -81,7 +81,7 @@ string GetString<T>(T value)
         return "null";
     }
 
-    return value.ToString();
+    return value.ToString()!;
 }
 
 int GetMaxLengthOfElementString<T>(T[,] matrix)
